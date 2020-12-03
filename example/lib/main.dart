@@ -199,6 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
       markedDateCustomShapeBorder: CircleBorder(
         side: BorderSide(color: Colors.yellow)
       ),
+      markedDateCustomColor: Colors.grey,
       markedDateCustomTextStyle: TextStyle(
         fontSize: 18,
         color: Colors.blue,

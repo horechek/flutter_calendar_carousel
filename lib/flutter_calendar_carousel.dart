@@ -82,6 +82,8 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final Widget markedDateWidget;
   /// Change `ShapeBorder` when `markedDateShowIcon` is set to false.
   final ShapeBorder markedDateCustomShapeBorder;
+  /// Change `ShapeBorder` when `markedDateShowIcon` is set to false.
+  final Color markedDateCustomColor;
   /// Change `TextStyle` when `markedDateShowIcon` is set to false.
   final TextStyle markedDateCustomTextStyle;
 
@@ -213,6 +215,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
     this.showIconBehindDayText = false,
     this.pageScrollPhysics = const ScrollPhysics(),
     this.shouldShowTransform = true,
+    this.markedDateCustomColor,
   }): super(key: key);
 
   @override
@@ -427,7 +430,11 @@ class _CalendarState<T extends EventInterface> extends State<CalendarCarousel<T>
                   ? widget.selectedDayButtonColor
                   : isToday && widget.todayButtonColor != null
                       ? widget.todayButtonColor
-                      : widget.dayButtonColor,
+                      : widget.markedDateCustomColor != null
+                        && widget.markedDatesMap != null
+                        && widget.markedDatesMap.getEvents(now).length > 0
+                        ? widget.markedDateCustomColor
+                        : widget.dayButtonColor,
           onPressed: () => _onDayPressed(now),
           padding: EdgeInsets.all(widget.dayPadding),
           shape: widget.markedDateCustomShapeBorder != null

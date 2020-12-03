@@ -426,15 +426,15 @@ class _CalendarState<T extends EventInterface> extends State<CalendarCarousel<T>
         onLongPress: () => _onDayLongPressed(now),
         child: FlatButton(
           color:
-              isSelectedDay && widget.selectedDayButtonColor != null
-                  ? widget.selectedDayButtonColor
-                  : isToday && widget.todayButtonColor != null
-                      ? widget.todayButtonColor
-                      : widget.markedDateCustomColor != null
-                        && widget.markedDatesMap != null
-                        && widget.markedDatesMap.getEvents(now).length > 0
+            isSelectedDay && widget.selectedDayButtonColor != null
+                ? widget.selectedDayButtonColor
+                : widget.markedDateCustomColor != null
+                    && widget.markedDatesMap != null
+                    && widget.markedDatesMap.getEvents(now).length > 0
                         ? widget.markedDateCustomColor
-                        : widget.dayButtonColor,
+                        : isToday && widget.todayButtonColor != null
+                            ? widget.todayButtonColor
+                            : widget.dayButtonColor,
           onPressed: () => _onDayPressed(now),
           padding: EdgeInsets.all(widget.dayPadding),
           shape: widget.markedDateCustomShapeBorder != null
